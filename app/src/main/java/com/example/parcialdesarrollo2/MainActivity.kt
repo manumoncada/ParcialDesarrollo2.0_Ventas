@@ -16,21 +16,21 @@ class MainActivity : ComponentActivity() {
             MaterialTheme {
                 val navController = rememberNavController()
                 val productos = remember { mutableStateListOf<Producto>() }
-                val carrito = remember { mutableStateListOf<Producto>() }
+                val Carrito = remember { mutableStateListOf<Producto>() }
 
                 NavHost(navController, startDestination = "catalogo") {
                     composable("catalogo") {
-                        Catalogo(navController, productos, carrito)
+                        Catalogo(navController, productos, Carrito)
                     }
                     composable("registro") {
                         Registro(navController, productos)
                     }
                     composable("detalle/{productoId}") { backStackEntry ->
                         val id = backStackEntry.arguments?.getString("productoId")?.toIntOrNull()
-                        Detalle(navController, id, productos, carrito)
+                        Detalle(navController, id, productos, Carrito)
                     }
                     composable("carrito") {
-                        Carrito(navController, carrito)
+                        Carrito(navController, Carrito)
                     }
                 }
             }
